@@ -1,0 +1,20 @@
+app:
+  name: koobeton
+  env: dev
+  key: GHIOKNmbhjiokjBNMGHJKLmn56789
+  listen: 8000
+  hostname: http://localhost
+  timezone: UTC
+  debug: true
+
+db:
+  connection: mysql
+  host: mysql
+  port: 3306
+  database: klog
+  user: root
+  password: 123456
+
+mail:
+  from: example@example.com
+  target: example@example.com
