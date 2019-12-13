@@ -2,18 +2,19 @@ app:
   name: koobeton
   env: dev
   key: GHIOKNmbhjiokjBNMGHJKLmn56789
-  listen: 8000
+  listen: ":8000"
+  charset: UTF-8
   hostname: http://localhost
   timezone: UTC
-  debug: true
+  error: debug
 
 db:
-  connection: mysql
-  host: mysql
-  port: 3306
-  database: klog
-  user: root
-  password: 123456
+  connection: sqlite3
+  database: "../koobeton.db"
+  #host: mysql
+  #port: 3306
+  #user: root
+  #password: "123456"
 
 mail:
   from: example@example.com

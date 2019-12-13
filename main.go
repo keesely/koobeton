@@ -3,13 +3,10 @@
 package main
 
 import (
-	"github.com/kataras/iris"
+	"koobeton/app"
+	_ "koobeton/routes"
 )
 
 func main() {
-	app := iris.New()
-	app.Run(
-		iris.Addr(":8000"),
-		iris.WithCharset("UTF-8"),
-	)
+	app.Run()
 }
