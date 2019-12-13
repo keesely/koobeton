@@ -20,7 +20,7 @@ type User struct {
 	Phone     string    `json:"phone" xorm:"varchar(11)"`
 	LastedIP  string    `json:"lasted_ip" xorm:"varchar(255) 'lasted_ip'"`
 	LastedAt  time.Time `json:"lasted_at" xorm:"datetime"`
-	CreatedAt time.Time `json:"created_at" xorm:"created default now()"`
+	CreatedAt time.Time `json:"created_at" xorm:"created"`
 	UpdatedAt time.Time `json:"updated_at" xorm:"updated"`
 	DeletedAt time.Time `json:"deleted_at" xorm:"deleted"`
 }

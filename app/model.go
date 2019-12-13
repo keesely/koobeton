@@ -8,8 +8,6 @@ import (
 	"github.com/go-xorm/xorm"
 	"github.com/kataras/iris"
 	_ "github.com/mattn/go-sqlite3"
-	//"reflect"
-	//"log"
 )
 
 var (

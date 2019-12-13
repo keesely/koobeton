@@ -10,7 +10,7 @@ app:
 
 db:
   connection: sqlite3
-  database: "../koobeton.db"
+  database: "./conf/koobeton.db"
   #host: mysql
   #port: 3306
   #user: root

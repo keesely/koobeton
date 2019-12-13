@@ -6,7 +6,6 @@ import (
 	"github.com/kataras/iris"
 	yaml "gopkg.in/yaml.v2"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
@@ -41,9 +40,6 @@ func getParams(ctx iris.Context) RequestData {
 	case "application/x-yaml", "text/yaml", "text/x-yaml":
 		if body, err := GetBody(ctx.Request()); err == nil {
 			yaml.Unmarshal(body, &params)
-			pp := make(map[string]interface{})
-			yaml.Unmarshal([]byte(`email:112233`), &pp)
-			log.Println(&params, string(body), pp)
 		}
 		break
 	case "application/xml", "text/xml":
