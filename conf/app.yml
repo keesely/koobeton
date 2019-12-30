@@ -19,3 +19,8 @@ db:
 mail:
   from: example@example.com
   target: example@example.com
+
+admin:
+  name: admin
+  email: chinboy2012@gmail.com
+  passwd: "admin123"

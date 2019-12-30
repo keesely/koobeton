@@ -1,0 +1,14 @@
+// SpaceController.go kee > 2019/12/27
+
+package main
+
+import (
+	"koobeton/app"
+)
+
+type SpaceController struct{}
+
+// 创建用户空间
+//func (c *SpaceController) Create(ctx app.Context) {
+
+//}

@@ -7,7 +7,6 @@ import (
 )
 
 type Controller struct {
-	Result Result
 }
 
 type Result struct {

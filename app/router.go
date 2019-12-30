@@ -17,19 +17,23 @@ type Router struct {
 type OnError func(Context)
 
 type IrisMvcRoute struct {
-	Mvc *mvc.Application
+	*mvc.Application
 }
 
 type Context iris.Context
 
-type Json map[string]interface{}
+type Party struct {
+	iris.Party
+}
 
 func init() {
 	NewApp()
 }
 
 func Routers(routers []Router) {
-	for _, c := range routers {
+	//for _, c := range routers {
+	for i := 0; i < len(routers); i++ {
+		c := routers[i]
 		var (
 			methods = []string{
 				"GET", "POST", "PUT", "DELETE", "OPTIONS", "TRACE", "HEAD", "CONNECT", "PATCH", "ANY",
@@ -49,7 +53,7 @@ func Routers(routers []Router) {
 			}
 		}
 
-		if typeof == "func(utils.IrisMvcRoute)" {
+		if typeof == "func(app.IrisMvcRoute)" {
 			// iris mvc route set
 			mvc.Configure(app.Party(path), func(app *mvc.Application) {
 				c.Action.(func(IrisMvcRoute))(IrisMvcRoute{app})
@@ -57,7 +61,7 @@ func Routers(routers []Router) {
 		} else if typeof == "func(*mvc.Application)" {
 			// iris mvc route func
 			mvc.Configure(app.Party(path), c.Action.(func(*mvc.Application)))
-		} else if typeof == "func(utils.Context)" {
+		} else if typeof == "func(app.Context)" {
 			// iris application route
 			app.Handle(method, path, func(ctx iris.Context) {
 				c.Action.(func(Context))(ctx)
@@ -66,6 +70,19 @@ func Routers(routers []Router) {
 			// new iris mvc route
 			mvc.New(app.Party(c.Path)).Handle(c.Action)
 		}
+	}
+}
+
+func PartyFunc(route func(Party)) func(iris.Party) {
+	return func(r iris.Party) {
+		party := Party{r}
+		route(party)
+	}
+}
+
+func RouteHandle(handle func(Context)) func(iris.Context) {
+	return func(ctx iris.Context) {
+		handle(ctx.(Context))
 	}
 }
 
